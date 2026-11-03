@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Little Voice | صوتي"
+description = "A calm bilingual Arabic and English AAC communication app for children and their caregivers, with private local storage and offline support."
+version = "1.0.0"
+id = "artifacts/little-voice"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 23360
+
+[services.development]
+run = "pnpm --filter @workspace/little-voice run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/little-voice", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/little-voice/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "23360"
+BASE_PATH = "/"

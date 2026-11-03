@@ -1,0 +1,1 @@
+- [Offline update policy](offline-updates.md) — never interrupt active AAC communication with an automatic app reload.
